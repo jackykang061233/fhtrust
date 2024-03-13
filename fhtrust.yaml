@@ -1,0 +1,116 @@
+openapi: 3.0.0
+info:
+  title: FH Trust ETF NAV API
+  version: 1.0.0
+servers:
+  - url: https://www.fhtrust.com.tw/FhtrustAPI/etfnav
+paths:
+  /:
+    get:
+      summary: 復華基金淨值
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RequestData'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseData'
+components:
+  schemas:
+    RequestData:
+      type: object
+      properties:
+        FundID:
+          type: string
+          description: 基金代號
+        sDate:
+          type: string
+          format: date
+          description: 查詢開始時間 格式YYYY/MM/DD
+        eDate:
+          type: string
+          format: date
+          description: 查詢結束時間 格式YYYY/MM/DD
+        format:
+          type: string
+          enum:
+            - json
+          description: 回傳類別
+      required:
+        - FundID
+        - sDate
+        - eDate
+        - format
+    ResponseData:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundData'
+        status:
+          type: integer
+          description: 狀態
+        responseStatus:
+          type: string
+          nullable: true
+          description: 回應狀態
+    FundData:
+      type: object
+      properties:
+        fundID:
+          type: string
+          description: 基金代號
+        pnav:
+          type: number
+          description: 淨值
+        navDate:
+          type: string
+          format: date
+          description: 淨值日期
+        change:
+          type: number
+          description: 漲跌
+        changeRange:
+          type: number
+          description: 單日漲跌幅(%)
+        changeRangeAcc:
+          type: number
+          description: 累積漲跌幅(%)
+        qnav_l:
+          type: integer
+          description: 淨值小數位數
+        FunNav:
+          type: number
+          nullable: true
+          description: 基本面額
+        eq_Income:
+          type: number
+          nullable: true
+          description: 收益平準金
+        eq_Cap:
+          type: number
+          nullable: true
+          description: 資本損益益平準金
+        eq_Interest:
+          type: number
+          nullable: true
+          description: 利息淨收入
+        eq_Dividend:
+          type: number
+          nullable: true
+          description: 股利淨收入
+      required:
+        - fundID
+        - pnav
+        - navDate
+        - change
+        - changeRange
+        - changeRangeAcc
+        - qnav_l
