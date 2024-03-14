@@ -1,0 +1,12 @@
+{
+    "id": "fhtrust_API",
+    "schema_version": "v1",
+    "name_for_human": "fhtrust_API",
+    "name_for_model": "fhtrust_API",
+    "description_for_human": "fhtrust_API",
+    "description_for_model": "fhtrust_API",
+    "api": {
+      "type": "openapi",
+      "url": "https://fhtrust.onrender.com/fhtrust.yaml"
+    }
+}
