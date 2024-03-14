@@ -36,10 +36,10 @@ async def get_yaml():
     else:
         raise HTTPException(status_code=404, detail="File not found")
 
-# @app.get("/plugin.json", response_class=FileResponse)
-# async def get_json():
-#     file_path = "plugin.json"
-#     if os.path.isfile(file_path):
-#         return FileResponse(file_path)
-#     else:
-#         raise HTTPException(status_code=404, detail="File not found")
+@app.get("/plugin.json", response_class=FileResponse)
+async def get_json():
+    file_path = "plugin.json"
+    if os.path.isfile(file_path):
+        return FileResponse(file_path)
+    else:
+        raise HTTPException(status_code=404, detail="File not found")
