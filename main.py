@@ -40,6 +40,6 @@ async def get_yaml():
 async def get_json():
     file_path = "plugin.json"
     if os.path.isfile(file_path):
-        return FileResponse(file_path)
+        return FileResponse(file_path, media_type='application/json')
     else:
         raise HTTPException(status_code=404, detail="File not found")
