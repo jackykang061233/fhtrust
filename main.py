@@ -28,15 +28,15 @@ async def home():
     </body>
     </html>
     """
-@app.get("/fhtrust.yaml", response_class=FileResponse)
+@app.get("/fhtrust.yaml")
 async def get_yaml():
     file_path = "fhtrust.yaml"
     if os.path.isfile(file_path):
-        return FileResponse(file_path)
+        return FileResponse(file_path, media_type='application/yaml')
     else:
         raise HTTPException(status_code=404, detail="File not found")
 
-@app.get("/plugin.json", response_class=FileResponse)
+@app.get("/plugin.json")
 async def get_json():
     file_path = "plugin.json"
     if os.path.isfile(file_path):
