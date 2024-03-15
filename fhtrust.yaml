@@ -29,6 +29,13 @@ paths:
           schema:
             type: string
             format: date
+        - name: format
+          in: query
+          description: '回傳格式'
+          required: true
+          schema:
+            type: string
+
       responses:
         200:
           description: '{200 response description}'
@@ -99,14 +106,11 @@ paths:
                         - changeRange
                         - changeRangeAcc
                         - qnav_l
-                  # status:
-                  #   description: 狀態
-                  #   type: integer
-                  # responseStatus:
-                  #   description: 回應狀態
-                  #   type:
-                  #     - number
-                  #     - 'null'
-                required:
-                  - result
-                  # - status
+                  status:
+                    description: 狀態
+                    type: integer
+                  responseStatus:
+                    description: 回應狀態
+                    type: number
+                    nullable: true
+
