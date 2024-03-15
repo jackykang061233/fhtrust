@@ -4,9 +4,9 @@ info:
   title: "fhtrust"
 servers:
   -
-    url: 'https://www.fhtrust.com.tw/FhtrustAPI/etfnav'
+    url: 'https://www.fhtrust.com.tw'
 paths:
-  /:
+  /FhtrustAPI/etfnav:
     get:
       parameters:
         - name: FundID
